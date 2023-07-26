@@ -1,0 +1,57 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _66908158ae-20221220 OPENFOAM=2212 version=v2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : sprayFoam
+Date   : Jul 25 2023
+Time   : 17:11:31
+Host   : DESKTOP-GEMP1RT
+PID    : 6907
+I/O    : uncollated
+Case   : /mnt/e/OpenFOAM/spray/sprayFoam/aachenBomb
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: Operating solver in PISO mode
+
+
+Reading g
+Reading thermophysical properties
+
+Selecting thermodynamics package 
+{
+    type            hePsiThermo;
+    mixture         reactingMixture;
+    transport       sutherland;
+    thermo          janaf;
+    energy          sensibleEnthalpy;
+    equationOfState perfectGas;
+    specie          specie;
+}
+
+Selecting chemistryReader chemkinReader
+Reading CHEMKIN thermo data in new file format
+
+
+--> FOAM FATAL ERROR: (openfoam-2212)
+Sum of mass fractions is zero for species 1(NH3)
+    Min of mass fraction sum 0
+
+    From void Foam::multiComponentMixture<ThermoType>::correctMassFractions() [with ThermoType = Foam::sutherlandTransport<Foam::species::thermo<Foam::janafThermo<Foam::perfectGas<Foam::specie> >, Foam::sensibleEnthalpy> >]
+    in file lnInclude/multiComponentMixture.C at line 65.
+
+FOAM exiting
+
